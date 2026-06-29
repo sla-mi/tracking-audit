@@ -47,7 +47,7 @@
   <div class="kpis">
     <div class="kpi"><span class="n">17</span><span class="l">с пикселем</span></div>
     <div class="kpi"><span class="n">47</span><span class="l">greenfield (Рига)</span></div>
-    <div class="kpi"><span class="n">2</span><span class="l">с CAPI (Stape)</span></div>
+    <div class="kpi"><span class="n">2</span><span class="l">Fienta-орга на Stape · вся TicketShop на mpc-CAPI</span></div>
     <div class="kpi"><span class="n amb">4</span><span class="l">свой GTM</span></div>
   </div>
 
@@ -118,7 +118,7 @@
   </table></div>
 
   <div class="note">
-    <b>Установка на TicketShop.</b> Поверх платформенного слоя (пиксель <span class="mono">569…</span> в контейнере <span class="mono">GTM-5H6J8KD</span> + <span class="mono">824…</span>(fb app_id) + <span class="mono">2128…</span>) орг отдаёт TicketShop свой Pixel ID, который тот вешает <b>на конкретное событие</b>. Орг-пиксель шлёт только <b>ViewContent</b> с дефолтным мета-eid (не настоящий CAPI-dedup, как у Fienta), <b>без суммы</b> — то есть данные беднее, даже когда пиксель стоит. CAPI — <span class="mono">cdl=API_unavailable</span> у всех → серверной части нет. Свой GTM — только у TOURINGTUNES.
+    <b>Установка на TicketShop.</b> Поверх платформенного слоя (пиксель <span class="mono">569…</span> в контейнере <span class="mono">GTM-5H6J8KD</span> + <span class="mono">824…</span>(fb app_id) + <span class="mono">2128…</span>) орг отдаёт TicketShop свой Pixel ID, который тот вешает <b>на конкретное событие</b>. Браузерный орг-пиксель шлёт только <b>ViewContent</b> с дефолтным eid, без суммы. <b>НО CAPI на TicketShop ЕСТЬ — платформенно:</b> сервер гонит Meta-события через шлюз <span class="mono">mpc…is5qnl632q.run.app/events</span> (общий с ticketbest, сторонний вендор). Перехват POST подтвердил настоящий CAPI: <span class="mono">AddToCart + value/currency + external_id + дедуп по event_id «facebook.AddToCart…»</span>. <span class="mono">cdl=API_unavailable</span> на браузерном пикселе этого НЕ показывает (поэтому раньше я ошибочно писал «сервера нет»). Открыто: шлёт ли mpc в пиксель орга или только платформы. Свой GTM — только у TOURINGTUNES.
   </div>
 
   <h2 class="sec"><span class="dot da"></span>TICKETSHOP · greenfield (25, Рига) — только платформенный слой</h2>
@@ -154,7 +154,7 @@
   </table></div>
 
   <div class="foot">
-    <b>Итог.</b> Server-side / CAPI — у <b>2 из 16</b>: <b>okoncert</b> и <b>Curiosophy</b> через общий Stape-шлюз (<span class="mono">capig.stape.*</span>, один инстанс — Fienta-платформенный/агентский, включается по орг). У остальных 14 — нет (cdl=API_unavailable + нет домена-шлюза). Важно: <span class="mono">cdl</span> сам по себе Stape НЕ показывает — решает проверка домена-шлюза в Network. Свой GTM — трое: Curiosophy, Braucam Kopā (Fienta), TOURINGTUNES (TicketShop). Greenfield (мерят ноль) — 47 рижских оргов. TicketShop разрешает пиксель орга (доказано 6 кейсами), миграция не нужна. ВАЖНО про пробел: Прямая Речь (org PRYAMAYA на Fienta) в базе ЕСТЬ, но в Fienta-орги не попала — её <span class="mono">ticket_url=pryamaya.eu</span> (свой домен со встроенным Fienta-чекаутом), а фильтр шёл по <span class="mono">fienta.com</span>. Таких потенциально много: <b>168 активных событий</b> продаются через нестандартные ссылки (свои домены/эмбеды) — там могут быть ещё скрытые Fienta-орги. Bilešu Paradīze 165 / Bilešu Serviss 66 по пикселям не разбирали.<br>
+    <b>Итог (server-side / CAPI).</b> <b>Fienta:</b> только у <b>okoncert</b> и <b>Curiosophy</b> — общий Stape-шлюз <span class="mono">capig.stape.*</span> (opt-in); остальные Fienta-орги — голый браузер. <b>TicketShop:</b> <b>платформенный Meta CAPI на ВСЕХ событиях</b> через <span class="mono">mpc…is5qnl632q.run.app/events</span> (общий вендор с ticketbest; перехват POST = настоящий CAPI с дедупом по event_id, суммой и external_id) → TicketShop накрыт server-side ЛУЧШЕ большинства Fienta-оргов. <b>Урок:</b> <span class="mono">cdl=API_unavailable</span> слеп к серверу (ошибался трижды) — server-side ищем ТОЛЬКО по домену-шлюзу в Network (capig.stape / mpc.run.app / stape.io / madgicx). Свой GTM — трое: Curiosophy, Braucam Kopā (Fienta), TOURINGTUNES (TicketShop). Greenfield (мерят ноль) — 47 рижских оргов. TicketShop разрешает пиксель орга (доказано 6 кейсами), миграция не нужна. ВАЖНО про пробел: Прямая Речь (org PRYAMAYA на Fienta) в базе ЕСТЬ, но в Fienta-орги не попала — её <span class="mono">ticket_url=pryamaya.eu</span> (свой домен со встроенным Fienta-чекаутом), а фильтр шёл по <span class="mono">fienta.com</span>. Таких потенциально много: <b>168 активных событий</b> продаются через нестандартные ссылки (свои домены/эмбеды) — там могут быть ещё скрытые Fienta-орги. Bilešu Paradīze 165 / Bilešu Serviss 66 по пикселям не разбирали.<br>
     Метод: чтение реальных запросов <span class="mono">facebook.com/tr</span> через Performance API + код страниц, в реальном Chrome. Внутренний рабочий документ.
   </div>
 </div>
