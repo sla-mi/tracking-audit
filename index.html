@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Аудит трекинга — Fienta + TicketShop (Рига)</title>
+<style>
+  :root{--ink:#1d1d1f;--mut:#86868b;--line:#e7e7ea;--soft:#f5f5f7;--card:#fff;--red:#d9304a;--amb:#c47f12;--grn:#23a05b;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:#fbfbfd;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:13px;line-height:1.45;-webkit-font-smoothing:antialiased;}
+  .page{max-width:1000px;margin:0 auto;padding:28px 20px 60px;}
+  .title{font-size:21px;font-weight:680;letter-spacing:-.015em;}
+  .sub{color:var(--mut);font-size:12.5px;margin-top:3px;}
+  .kpis{display:flex;gap:10px;margin:16px 0 10px;flex-wrap:wrap;}
+  .kpi{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:10px 16px;display:flex;flex-direction:column;min-width:96px;}
+  .kpi .n{font-size:24px;font-weight:700;letter-spacing:-.02em;}
+  .kpi .l{font-size:11.5px;color:var(--mut);margin-top:1px;}
+  .red{color:var(--red);}.amb{color:var(--amb);}
+  h2.sec{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:640;margin:26px 0 8px;}
+  .dot{width:9px;height:9px;border-radius:50%;}
+  .dg{background:var(--grn);}.da{background:var(--amb);}.db{background:#3b6fd4;}
+  .card{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card);}
+  table{width:100%;border-collapse:collapse;}
+  th,td{text-align:left;padding:7px 11px;border-bottom:1px solid #ededf0;vertical-align:top;}
+  th{font-size:10.5px;font-weight:600;color:var(--mut);text-transform:uppercase;letter-spacing:.03em;background:#fafafa;}
+  tr:last-child td{border-bottom:none;}
+  td.c,th.c{text-align:center;}
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:#6e6e73;}
+  .mut{color:var(--mut);font-size:12px;}
+  .x{color:var(--red);font-weight:560;}
+  .q{color:var(--amb);font-weight:600;}
+  .gtm{font-family:ui-monospace,monospace;font-size:10.5px;background:rgba(196,127,18,.14);color:#9a6510;padding:1px 6px;border-radius:5px;white-space:nowrap;}
+  tr.hl{background:rgba(196,127,18,.06);}
+  .note{margin:10px 2px 0;color:#3a3a3c;font-size:12.5px;line-height:1.6;background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:13px 16px;}
+  .note b{color:var(--ink);}
+  .foot{margin-top:22px;color:var(--mut);font-size:11.5px;line-height:1.55;border-top:1px solid var(--line);padding-top:14px;}
+  .cols{column-count:2;column-gap:20px;}
+  @media(max-width:560px){.cols{column-count:1;}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="title">Аудит трекинга организаторов · Рига</div>
+  <div class="sub">Fienta + TicketShop · проверено в браузере 2026-06-29 · по реальным запросам пикселя и коду страниц</div>
+
+  <div class="kpis">
+    <div class="kpi"><span class="n">16</span><span class="l">с пикселем</span></div>
+    <div class="kpi"><span class="n">47</span><span class="l">greenfield (Рига)</span></div>
+    <div class="kpi"><span class="n red">0</span><span class="l">с CAPI / server-side</span></div>
+    <div class="kpi"><span class="n amb">3</span><span class="l">свой GTM</span></div>
+  </div>
+
+  <!-- ===================== FIENTA ===================== -->
+  <h2 class="sec"><span class="dot dg"></span>FIENTA · пиксель есть (10, все Рига)</h2>
+  <div class="card"><table>
+    <thead><tr><th>Орг</th><th class="c">Соб</th><th>Pixel ID</th><th>Установка</th><th class="c">Свой GTM</th><th class="c">CAPI</th><th>Доп.</th></tr></thead>
+    <tbody>
+      <tr><td>okoncert</td><td class="c">8</td><td class="mono">319888538876561</td><td>Fienta-стандарт</td><td class="c">—</td><td class="c"><span class="x">нет</span></td><td class="mut">+свой GA4, сумма</td></tr>
+      <tr><td>M/Darbnīca</td><td class="c">7</td><td class="mono">1447705679171750</td><td>Fienta-стандарт</td><td class="c">—</td><td class="c"><span class="x">нет</span></td><td class="mut">+свой GA4</td></tr>
+      <tr><td>Viskija Meistarklases</td><td class="c">7</td><td class="mono">324847924818731</td><td>Fienta-стандарт</td><td class="c">—</td><td class="c"><span class="x">нет</span></td><td></td></tr>
+      <tr><td>Farhads Nijozs</td><td class="c">4</td><td class="mono">345341206100179</td><td>Fienta-стандарт</td><td class="c">—</td><td class="c"><span class="x">нет</span></td><td class="mut">на 1 событии PageView не шлёт</td></tr>
+      <tr><td>Stock Assist + Sounddive</td><td class="c">2</td><td class="mono">2002526390361151</td><td>Fienta-стандарт</td><td class="c">—</td><td class="c"><span class="x">нет</span></td><td class="mut">общий пиксель</td></tr>
+      <tr><td>Connectra Social</td><td class="c">1</td><td class="mono">2687063728175855</td><td>Fienta-стандарт</td><td class="c">—</td><td class="c"><span class="x">нет</span></td><td class="mut">+свой GA4</td></tr>
+      <tr><td>Riga TechGirls</td><td class="c">1</td><td class="mono">580960017881925</td><td>Fienta-стандарт</td><td class="c">—</td><td class="c"><span class="x">нет</span></td><td></td></tr>
+      <tr><td>The Lodge <span class="mut">(Рига, Adminu 4)</span></td><td class="c">1</td><td class="mono">449611909543061 / 957443370425490</td><td>Fienta-стандарт</td><td class="c">—</td><td class="c"><span class="x">нет</span></td><td class="mut">2 пикселя</td></tr>
+      <tr><td>RED MIC</td><td class="c">1</td><td class="mono">473241356627987</td><td>Fienta-стандарт</td><td class="c">—</td><td class="c"><span class="x">нет</span></td><td class="mut">+свой GA4, сумма</td></tr>
+      <tr class="hl"><td>Curiosophy events</td><td class="c">1</td><td class="mono">1176579573044925</td><td>Fienta-стандарт <b>+ свой GTM</b></td><td class="c"><span class="gtm">GTM-NVWPFTRL</span></td><td class="c"><span class="x">нет</span></td><td class="mut">единственный со своим GTM</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="note">
+    <b>Как читать установку Fienta.</b> «Fienta-стандарт» = орг просто вписал Pixel ID в поле Fienta; в запросе виден кастомный dedup-ключ <span class="mono">eid=ob3_plugin-set_…</span> и только Fienta-контейнер <span class="mono">GTM-MN84VTD</span>. Лишний <span class="mono">GTM-XXXX</span> = свой GTM орга (гибкость, можно навесить серверную часть). <b>CAPI/server-side</b> напрямую из браузера не виден; косвенный признак — <span class="mono">cdl=API_unavailable</span> — стоит у всех 10 → серверной части нет ни у кого. «Свой GA4» (отдельный <span class="mono">G-XXXX</span>) — лишь признак, что орг сам лазил в настройки; на качество не влияет. Сумма+валюта и хешированный email появляются глубже по воронке (AddToCart), на PageView их обычно нет — но для нашего герой-показателя «цена за бронь» сумма второстепенна.
+  </div>
+
+  <h2 class="sec"><span class="dot da"></span>FIENTA · greenfield (22, Рига) — мерят ноль своего</h2>
+  <div class="card"><table>
+    <thead><tr><th class="c">#</th><th>Орг</th><th class="c">Соб</th><th>Пиксель</th><th>Свой GTM</th><th>Заметка</th></tr></thead>
+    <tbody>
+      <tr><td class="c mut">1</td><td>Gastronomijas Institūts</td><td class="c">9</td><td class="x">нет</td><td>—</td><td class="mut">крупнейший «нулевой»</td></tr>
+      <tr><td class="c mut">2</td><td>IDEAL MISTAKES HUB <span class="mut">(+Drink&amp;Draw)</span></td><td class="c">4</td><td class="x">нет</td><td>—</td><td></td></tr>
+      <tr><td class="c mut">3</td><td>Nords Event Communications</td><td class="c">3</td><td class="x">нет</td><td>—</td><td></td></tr>
+      <tr><td class="c mut">4</td><td>OBDO GIN &amp; DISTILLERY</td><td class="c">2</td><td class="x">нет</td><td>—</td><td></td></tr>
+      <tr class="hl"><td class="c mut">5</td><td>Braucam Kopā</td><td class="c">2</td><td class="x">нет</td><td><span class="gtm">GTM-P7NXZ4TD</span></td><td class="mut">свой GTM без пикселя · автобусные туры</td></tr>
+      <tr><td class="c mut">6</td><td>Rad-Dar</td><td class="c">1</td><td class="x">нет</td><td>—</td><td></td></tr>
+      <tr><td class="c mut">7</td><td>Tea Tree Comedy</td><td class="c">1</td><td class="x">нет</td><td>—</td><td></td></tr>
+      <tr><td class="c mut">8</td><td>Kelvins Necajevs</td><td class="c">1</td><td class="x">нет</td><td>—</td><td></td></tr>
+      <tr><td class="c mut">9</td><td>SIA «BURBONS»</td><td class="c">1</td><td class="x">нет</td><td>—</td><td></td></tr>
+      <tr><td class="c mut">10</td><td>BritCham</td><td class="c">1</td><td class="x">нет</td><td>—</td><td></td></tr>
+      <tr><td class="c mut">11</td><td>Body Reset, SIA</td><td class="c">1</td><td class="x">нет</td><td>—</td><td></td></tr>
+      <tr><td class="c mut">12</td><td>Narra GmbH</td><td class="c">1</td><td class="x">нет</td><td>—</td><td></td></tr>
+      <tr class="hl"><td class="c mut">13</td><td>Kristīne Hafnere</td><td class="c">1</td><td class="x">нет</td><td>—</td><td class="mut">событие закрыто, на орг-стр. пусто</td></tr>
+      <tr><td class="c mut">14</td><td>Zana Fejzic</td><td class="c">1</td><td class="x">нет</td><td>—</td><td class="mut">standup</td></tr>
+      <tr><td class="c mut">15</td><td>Lejiņa &amp; Partneri / Areté</td><td class="c">1</td><td class="x">нет</td><td>—</td><td></td></tr>
+      <tr><td class="c mut">16</td><td>Riga Gin Festival</td><td class="c">1</td><td class="x">нет</td><td>—</td><td></td></tr>
+      <tr><td class="c mut">17</td><td>Diadema Totalis</td><td class="c">1</td><td class="x">нет</td><td>—</td><td></td></tr>
+      <tr><td class="c mut">18</td><td>Sonatalicious Inc</td><td class="c">1</td><td class="x">нет</td><td>—</td><td></td></tr>
+      <tr><td class="c mut">19</td><td>Zakroyyy Band</td><td class="c">1</td><td class="x">нет</td><td>—</td><td></td></tr>
+      <tr><td class="c mut">20</td><td>the Comedy Nomad</td><td class="c">1</td><td class="x">нет</td><td>—</td><td></td></tr>
+      <tr><td class="c mut">21</td><td>SIA «Grupa93»</td><td class="c">1</td><td class="x">нет</td><td>—</td><td></td></tr>
+      <tr><td class="c mut">22</td><td>Diāna Trope</td><td class="c">1</td><td class="x">нет</td><td>—</td><td></td></tr>
+    </tbody>
+  </table></div>
+
+  <!-- ===================== TICKETSHOP ===================== -->
+  <h2 class="sec"><span class="dot db"></span>TICKETSHOP · пиксель орга есть (6)</h2>
+  <div class="card"><table>
+    <thead><tr><th>Орг</th><th>Город</th><th class="c">Соб</th><th>Pixel ID</th><th>Установка</th><th class="c">Свой GTM</th><th class="c">CAPI</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td>TOURINGTUNES</td><td>Рига <span class="mut">(RLB nams)</span></td><td class="c">2</td><td class="mono">1345222133434118</td><td>TicketShop per-event <b>+ свой GTM</b></td><td class="c"><span class="gtm">GTM-MD2FC5LM</span></td><td class="c"><span class="x">нет</span></td></tr>
+      <tr><td>Atom Agency</td><td>Рига <span class="mut">(SPELET)</span></td><td class="c">1</td><td class="mono">1209354827682212</td><td>TicketShop per-event</td><td class="c">—</td><td class="c"><span class="x">нет</span></td></tr>
+      <tr><td>PILNA</td><td>Рига <span class="mut">(Stricka villa)</span></td><td class="c">1</td><td class="mono">436878693175708</td><td>TicketShop per-event</td><td class="c">—</td><td class="c"><span class="x">нет</span></td></tr>
+      <tr><td>LEMINSKATA PUBLISHING</td><td>Рига <span class="mut">(Daugavas st.)</span></td><td class="c">1</td><td class="mono">1662950364922816</td><td>TicketShop per-event</td><td class="c">—</td><td class="c"><span class="x">нет</span></td></tr>
+      <tr><td>STAR33</td><td><span class="amb">Юрмала</span></td><td class="c">1</td><td class="mono">1029565252011069</td><td>TicketShop per-event</td><td class="c">—</td><td class="c"><span class="x">нет</span></td></tr>
+      <tr><td>Biedrība «Zilonis»</td><td><span class="amb">Кулдига</span></td><td class="c">1</td><td class="mono">2360613947714282</td><td>TicketShop per-event</td><td class="c">—</td><td class="c"><span class="x">нет</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="note">
+    <b>Установка на TicketShop.</b> Поверх платформенного слоя (пиксель <span class="mono">569…</span> в контейнере <span class="mono">GTM-5H6J8KD</span> + <span class="mono">824…</span>(fb app_id) + <span class="mono">2128…</span>) орг отдаёт TicketShop свой Pixel ID, который тот вешает <b>на конкретное событие</b>. Орг-пиксель шлёт только <b>ViewContent</b> с дефолтным мета-eid (не настоящий CAPI-dedup, как у Fienta), <b>без суммы</b> — то есть данные беднее, даже когда пиксель стоит. CAPI — <span class="mono">cdl=API_unavailable</span> у всех → серверной части нет. Свой GTM — только у TOURINGTUNES.
+  </div>
+
+  <h2 class="sec"><span class="dot da"></span>TICKETSHOP · greenfield (25, Рига) — только платформенный слой</h2>
+  <div class="card"><table>
+    <thead><tr><th class="c">#</th><th>Орг (юрлицо / бренд)</th><th class="c">Соб</th></tr></thead>
+    <tbody>
+      <tr><td class="c mut">1</td><td>Biedrība Brīvo Aktieru Sabiedrība</td><td class="c">8</td></tr>
+      <tr><td class="c mut">2</td><td>READY EVENTS, SIA</td><td class="c">7</td></tr>
+      <tr><td class="c mut">3</td><td>Latvijas Kultūras akadēmija</td><td class="c">6</td></tr>
+      <tr><td class="c mut">4</td><td>SIA «Klekale»</td><td class="c">4</td></tr>
+      <tr><td class="c mut">5</td><td>SIA JKC MP Club <span class="mut">(Melnā Piektdiena/Depo)</span></td><td class="c">4</td></tr>
+      <tr><td class="c mut">6</td><td>SIA Stormkraft Apparel</td><td class="c">4</td></tr>
+      <tr><td class="c mut">7</td><td>Biedrība «Ciemos pie pasaciņas» <span class="mut">(Leļļu teātris)</span></td><td class="c">3</td></tr>
+      <tr><td class="c mut">8</td><td>STADIA ARTPLATFORM <span class="mut">(Т. Черковская)</span></td><td class="c">3</td></tr>
+      <tr><td class="c mut">9</td><td>ArtAmbar <span class="mut">(Ilona Jegorova)</span></td><td class="c">3</td></tr>
+      <tr><td class="c mut">10</td><td>«Circle Pit! Shows»</td><td class="c">3</td></tr>
+      <tr><td class="c mut">11</td><td>SIA L-EVENTS</td><td class="c">2</td></tr>
+      <tr><td class="c mut">12</td><td>Pašnodarbinātais Arturs Skutelis</td><td class="c">1</td></tr>
+      <tr><td class="c mut">13</td><td>Bruno Rejs Corns</td><td class="c">1</td></tr>
+      <tr><td class="c mut">14</td><td>VAStudio SIA</td><td class="c">1</td></tr>
+      <tr><td class="c mut">15</td><td>Biedrība «Koncertu Paradīze»</td><td class="c">1</td></tr>
+      <tr><td class="c mut">16</td><td>Kultūras akadēmijas aģentūra (Koledža)</td><td class="c">1</td></tr>
+      <tr><td class="c mut">17</td><td>SIA Jello</td><td class="c">1</td></tr>
+      <tr><td class="c mut">18</td><td>SIA DS Aristo</td><td class="c">1</td></tr>
+      <tr><td class="c mut">19</td><td>Kultūras koledžas atbalsta biedrība</td><td class="c">1</td></tr>
+      <tr><td class="c mut">20</td><td>Biedrība Art Expansion</td><td class="c">1</td></tr>
+      <tr><td class="c mut">21</td><td>LATFRO ENTERTAINMENT</td><td class="c">1</td></tr>
+      <tr><td class="c mut">22</td><td>SIA «CKgroup Sound&amp;Light»</td><td class="c">1</td></tr>
+      <tr><td class="c mut">23</td><td>Tatjana Jermolajeva</td><td class="c">1</td></tr>
+      <tr><td class="c mut">24</td><td>SIA VOLTAGE</td><td class="c">1</td></tr>
+      <tr><td class="c mut">25</td><td>SIA «NURME BREWERY» <span class="mut">(фест на Hanzas Perons)</span></td><td class="c">1</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="foot">
+    <b>Итог.</b> Server-side / CAPI — нет ни у одного из 16 оргов с пикселем (везде <span class="mono">cdl=API_unavailable</span>) → универсальный незакрытый пробел. Свой GTM — только трое: Curiosophy, Braucam Kopā (Fienta), TOURINGTUNES (TicketShop). Greenfield (мерят ноль) — 47 рижских оргов. TicketShop разрешает пиксель орга (доказано 6 кейсами), миграция не нужна. Прямая Речь и подобные — не в нашей базе (продают мимо источников: Bilešu Paradīze 165 / Bilešu Serviss 66 по пикселям не разбирали).<br>
+    Метод: чтение реальных запросов <span class="mono">facebook.com/tr</span> через Performance API + код страниц, в реальном Chrome. Внутренний рабочий документ.
+  </div>
+</div>
+</body>
+</html>
