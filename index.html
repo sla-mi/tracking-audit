@@ -172,6 +172,21 @@
     <b>НИ ОДИН канал не заперт — свой пиксель орга ставится ВЕЗДЕ</b> (Fienta, TicketShop, bezrindas, Paradīze, Serviss; большинство оргов просто не настроили). А server-side почти ни у кого → <b>весь рынок адресуем</b> для «server-side + измеренная реклама». Цель = «свой пиксель поставить можно, а server-side нет». Таких каналов много: <b>bezrindas</b> (68, малые площадки), <b>mct / lelluteatris</b> (свои сайты театров), <b>Fienta-браузерные орги</b>, мелкие промоутеры (Прямая Речь, WHF, Театр Сна). <b>Bilešu Paradīze</b> (165, КРУПНЕЙШИЙ) — свой пиксель ставится (большинство просто не настроили), CAPI нет → <b>адресуем без миграции</b>. <b>TicketShop / ticketbest</b> уже с платформенным Meta CAPI (`mpc…run.app`) → плохие цели. Разбор 168 «нестандартных» ссылок → <b>90 событий-целей</b> (файл <span class="mono">_168_analysis.csv</span>): МЧТ, Кукольный, Dramaturgu/Dirty Deal театры, Rīgas cirks, клубы (Kaņepes/MASA/K.Suns/Depo/Rocket Bar), музеи.
   </div>
 
+  <!-- ===================== SONGKICK ===================== -->
+  <h2 class="sec"><span class="dot db"></span>Songkick (79) — слой-дискавери живой музыки, не билетка</h2>
+  <div class="card"><table>
+    <thead><tr><th>Тип</th><th>Площадки</th><th class="c">≈Соб</th><th class="c">Цель</th><th>Где реально билеты</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td>Клубы лайв-музыки</td><td><b>Depo (11)</b>, Melnā Piektdiena (6), Laska V21 (6), WONDERSALA (4), 1983, Coyote Fly, FIRST Club, Zabadaks, Kimmel</td><td class="c">~32</td><td class="c">✅ ядро</td><td class="mut">билетные шоу → TicketShop/bezrindas (пиксель можно); часть гигов — дверь/FB (онлайн-продаж нет)</td></tr>
+      <tr class="hl"><td>Средние залы</td><td>Hanzas Perons (6), Palladium (5), SPELET (3), The Lodge (3), Angāra, M/Darbnīca, Dailes</td><td class="c">~21</td><td class="c">✅</td><td class="mut">TicketShop / Fienta / Paradīze</td></tr>
+      <tr><td>Арены/большое</td><td>Xiaomi Arēna (7), Dzintari (7), Mežaparks (2), Festival Laima</td><td class="c">~17</td><td class="c"><span class="x">нет</span></td><td class="mut">Serviss / Paradīze (большие/гос)</td></tr>
+      <tr><td>Регион/разовое</td><td>Vecumnieku, Lielrendas, Bolderāja, baznīca, Nurme, Jūrmala</td><td class="c">~7</td><td class="c">—</td><td class="mut">вне/регион</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note">
+    <b>Songkick не добавил новых билеток — он вскрыл клубную сцену лайв-музыки</b> (Depo и компания), а это ядро целей (совпадает с изначальным обзвоном live-music площадок). Их билетные шоу идут на TicketShop/bezrindas (пиксель ставится), дверные/free гиги — на FB (там «цену за билет» мерить нечего). <b>~53 из 79 = цели</b> (32 клуба + 21 зал); арены (~17) — мимо.
+  </div>
+
   <div class="foot">
     <b>Итог (server-side / CAPI).</b> <b>Fienta:</b> только у <b>okoncert</b> и <b>Curiosophy</b> — общий Stape-шлюз <span class="mono">capig.stape.*</span> (opt-in); остальные Fienta-орги — голый браузер. <b>TicketShop:</b> <b>платформенный Meta CAPI на ВСЕХ событиях</b> через <span class="mono">mpc…is5qnl632q.run.app/events</span> (общий вендор с ticketbest; перехват POST = настоящий CAPI с дедупом по event_id, суммой и external_id) → TicketShop накрыт server-side ЛУЧШЕ большинства Fienta-оргов. <b>Урок:</b> <span class="mono">cdl=API_unavailable</span> слеп к серверу (ошибался трижды) — server-side ищем ТОЛЬКО по домену-шлюзу в Network (capig.stape / mpc.run.app / stape.io / madgicx). Свой GTM — трое: Curiosophy, Braucam Kopā (Fienta), TOURINGTUNES (TicketShop). Greenfield (мерят ноль) — 47 рижских оргов. TicketShop разрешает пиксель орга (доказано 6 кейсами), миграция не нужна. ВАЖНО про пробел: Прямая Речь (org PRYAMAYA на Fienta) в базе ЕСТЬ, но в Fienta-орги не попала — её <span class="mono">ticket_url=pryamaya.eu</span> (свой домен со встроенным Fienta-чекаутом), а фильтр шёл по <span class="mono">fienta.com</span>. Таких потенциально много: <b>168 активных событий</b> продаются через нестандартные ссылки (свои домены/эмбеды) — там могут быть ещё скрытые Fienta-орги. Bilešu Paradīze 165 / Bilešu Serviss 66 по пикселям не разбирали.<br>
     Метод: чтение реальных запросов <span class="mono">facebook.com/tr</span> через Performance API + код страниц, в реальном Chrome. Внутренний рабочий документ.
