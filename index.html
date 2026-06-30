@@ -175,7 +175,7 @@
   <!-- ===================== SONGKICK ===================== -->
   <h2 class="sec"><span class="dot db"></span>Songkick — клубная сцена лайв-музыки (трекинг по площадке)</h2>
   <div class="note" style="margin-bottom:10px">
-    <b>Важно:</b> у самих songkick-событий <span class="mono">ticket_url = songkick.com</span> — это слой-дискавери, реальной билетки в нём нет. «Билетка» ниже = где эта площадка <b>реально продаёт</b> по нашей же базе (её НЕ-songkick события). Где в базе билетки нет — площадка продаёт через дверь / FB / per-show, билетка и трекинг не определены → <span class="q">проверять точечно</span>.
+    <b>Важно:</b> у самих songkick-событий <span class="mono">ticket_url = songkick.com</span> — это слой-дискавери, билетки в нём нет. «Билетка» ниже = где площадка <b>реально продаёт</b>: для части подтвердилось нашей базой (её НЕ-songkick события), для клубов, которых в базе с билеткой не было — <b>проверено вручную по их сайтам/соцсетям/билеткам</b> (2026-06-30). Вывод: <b>билетка есть у всех</b> — «нет в базе» был пробел нашего парсера, а не отсутствие продаж. Клубная сцена живой музыки сидит в основном на <b>Biļešu Serviss</b>.
   </div>
   <div class="card"><table>
     <thead><tr><th>Площадка</th><th>Билетка (факт из базы)</th><th>Свой пиксель орга</th><th>Server-side / CAPI</th><th class="c">Цель</th></tr></thead>
@@ -188,19 +188,19 @@
       <tr><td>Hanzas Perons</td><td>Fienta + TicketShop</td><td>можно <span class="mut">(орг не проверял)</span></td><td>Fienta — нет; TS — <span class="mono">mpc</span></td><td class="c">✅</td></tr>
       <tr><td>M/Darbnīca</td><td>Fienta</td><td>можно <span class="mut">(орг не проверял)</span></td><td><span class="x">нет</span></td><td class="c">✅</td></tr>
       <tr><td>Dailes teātris</td><td>Fienta</td><td>можно <span class="mut">(орг не проверял)</span></td><td><span class="x">нет</span></td><td class="c">✅</td></tr>
-      <tr><td>Depo <span class="mut">(11)</span></td><td><span class="q">нет в базе</span> — дверь/FB/per-show</td><td class="mut">?</td><td class="mut">?</td><td class="c"><span class="q">точечно</span></td></tr>
-      <tr><td>Coyote Fly</td><td><span class="q">нет в базе</span> — дверь/FB/per-show</td><td class="mut">?</td><td class="mut">?</td><td class="c"><span class="q">точечно</span></td></tr>
-      <tr><td>Kimmel kvartāls</td><td><span class="q">нет в базе</span> — дверь/FB/per-show</td><td class="mut">?</td><td class="mut">?</td><td class="c"><span class="q">точечно</span></td></tr>
-      <tr><td>Palladium</td><td><span class="q">нет в базе</span> — per-show</td><td class="mut">?</td><td class="mut">?</td><td class="c"><span class="q">точечно</span></td></tr>
-      <tr><td>The Lodge</td><td><span class="q">нет в базе</span> — per-show</td><td class="mut">?</td><td class="mut">?</td><td class="c"><span class="q">точечно</span></td></tr>
-      <tr><td>Angāra koncertzāle</td><td><span class="q">нет в базе</span> — per-show</td><td class="mut">?</td><td class="mut">?</td><td class="c"><span class="q">точечно</span></td></tr>
+      <tr class="hl"><td>Depo <span class="mut">(11)</span></td><td>Biļešu Serviss + TicketShop <span class="mut">(их FB)</span></td><td>можно <span class="mut">(орг не проверял)</span></td><td>Serviss — нет; TS — <span class="mono">mpc</span></td><td class="c">✅</td></tr>
+      <tr class="hl"><td>Coyote Fly</td><td>Biļešu Serviss <span class="mut">(+ часть Fienta)</span></td><td>можно <span class="mut">(орг не проверял)</span></td><td><span class="x">нет</span></td><td class="c">✅</td></tr>
+      <tr class="hl"><td>Kimmel kvartāls</td><td>Biļešu Serviss <span class="mut">(+ свой сайт)</span></td><td>можно <span class="mut">(орг не проверял)</span></td><td><span class="x">нет</span></td><td class="c">✅</td></tr>
+      <tr><td>Palladium</td><td>Biļešu Serviss <span class="mut">(+ Paradīze)</span></td><td>можно <span class="mut">(орг не проверял)</span></td><td><span class="x">нет</span></td><td class="c">✅</td></tr>
+      <tr><td>The Lodge</td><td>Biļešu Serviss + Fienta <span class="mut">(+ RA)</span></td><td>можно <span class="mut">(орг не проверял)</span></td><td><span class="x">нет</span></td><td class="c">✅</td></tr>
+      <tr><td>Angāra koncertzāle</td><td>Biļešu Serviss + Paradīze <span class="mut">(+ свой сайт)</span></td><td>можно <span class="mut">(орг не проверял)</span></td><td><span class="x">нет</span></td><td class="c">✅</td></tr>
       <tr><td>Xiaomi Arēna</td><td>Serviss / Paradīze</td><td>можно</td><td><span class="x">нет</span></td><td class="c"><span class="x">арена</span></td></tr>
       <tr><td>Mežaparks · Dzintari</td><td>Serviss / bezrindas</td><td>можно</td><td><span class="x">нет</span></td><td class="c"><span class="x">большое</span></td></tr>
       <tr><td>Festival Laima · регион</td><td>фест / вне Риги</td><td class="mut">—</td><td class="mut">—</td><td class="c">—</td></tr>
     </tbody>
   </table></div>
   <div class="note">
-    <b>Songkick не добавил новых билеток — он вскрыл клубную сцену.</b> Из неё уже измеримо: <b>5 клубов на TicketShop</b> (Laska V21 — со своим пикселем, остальные четыре — пиксель ставится, платформенный CAPI уже идёт) + <b>3 на Fienta</b> (пиксель можно, CAPI нет → классическая цель «server-side+реклама»). <b>6 клубов</b> (Depo, Coyote Fly, Kimmel, Palladium, The Lodge, Angāra) в базе билетки не имеют — продают через дверь/FB/per-show → билетку и трекинг надо вскрывать точечно при контакте. Арены (Xiaomi/Dzintari/Mežaparks) и фесты — мимо.
+    <b>Songkick не добавил новых билеток — он вскрыл клубную сцену, и билетка есть у всех.</b> Расклад: <b>5 клубов на TicketShop</b> (Laska V21 — со своим пикселем; остальные четыре — пиксель ставится, платформенный CAPI уже идёт) + <b>3 на Fienta</b> (пиксель можно, CAPI нет) + <b>6 клубов в основном на Biļešu Serviss</b> (Depo, Coyote Fly, Kimmel, Palladium, The Lodge, Angāra — проверено вручную: Serviss разрешает пиксель орга, CAPI нет; Depo доп. на TicketShop с CAPI). Прежнее «нет в базе → дверь/FB» снято — это был пробел парсера. <b>Итого ~14 клубов/залов = живые цели.</b> Арены (Xiaomi/Dzintari/Mežaparks) и фесты — мимо. <b>Главный вывод:</b> Biļešu Serviss — крупнейший канал не только для арен, но и для клубной сцены → ключевой канал для «server-side + измеренная реклама».
   </div>
 
   <div class="foot">
