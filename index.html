@@ -75,7 +75,7 @@
     <b>Как читать установку Fienta.</b> «Fienta-стандарт» = орг просто вписал Pixel ID в поле Fienta; в запросе виден кастомный dedup-ключ <span class="mono">eid=ob3_plugin-set_…</span> и только Fienta-контейнер <span class="mono">GTM-MN84VTD</span>. Лишний <span class="mono">GTM-XXXX</span> = свой GTM орга (гибкость, можно навесить серверную часть). <b>CAPI/server-side</b> ловится по домену-шлюзу в Network: у <b>okoncert и Curiosophy</b> грузится <span class="mono">capig.stape.*</span> (Stape CAPI Gateway) → у них server-side ЕСТЬ. <span class="mono">cdl=API_unavailable</span> стоит у всех 10, но он отдельный Stape-шлюз НЕ видит — поэтому решает именно проверка домена, а не cdl. «Свой GA4» (отдельный <span class="mono">G-XXXX</span>) — лишь признак, что орг сам лазил в настройки; на качество не влияет. Сумма+валюта и хешированный email появляются глубже по воронке (AddToCart), на PageView их обычно нет — но для нашего герой-показателя «цена за бронь» сумма второстепенна.
   </div>
 
-  <h2 class="sec"><span class="dot da"></span>FIENTA · greenfield (22, Рига) — мерят ноль своего</h2>
+  <h2 class="sec"><span class="dot da"></span>FIENTA · greenfield (23, Рига) — мерят ноль своего</h2>
   <div class="card"><table>
     <thead><tr><th class="c">#</th><th>Орг</th><th class="c">Соб</th><th>Пиксель</th><th>Свой GTM</th><th>Заметка</th></tr></thead>
     <tbody>
@@ -101,6 +101,7 @@
       <tr><td class="c mut">20</td><td>the Comedy Nomad</td><td class="c">1</td><td class="x">нет</td><td>—</td><td></td></tr>
       <tr><td class="c mut">21</td><td>SIA «Grupa93»</td><td class="c">1</td><td class="x">нет</td><td>—</td><td></td></tr>
       <tr><td class="c mut">22</td><td>Diāna Trope</td><td class="c">1</td><td class="x">нет</td><td>—</td><td></td></tr>
+      <tr><td class="c mut">23</td><td>Dailes teātris</td><td class="c">1</td><td class="x">нет</td><td>—</td><td class="mut">Fienta · 1 соб.</td></tr>
     </tbody>
   </table></div>
 
@@ -122,7 +123,7 @@
     <b>Установка на TicketShop.</b> Поверх платформенного слоя (пиксель <span class="mono">569…</span> в контейнере <span class="mono">GTM-5H6J8KD</span> + <span class="mono">824…</span>(fb app_id) + <span class="mono">2128…</span>) орг отдаёт TicketShop свой Pixel ID, который тот вешает <b>на конкретное событие</b>. Браузерный орг-пиксель шлёт только <b>ViewContent</b> с дефолтным eid, без суммы. <b>НО CAPI на TicketShop ЕСТЬ — платформенно:</b> сервер гонит Meta-события через шлюз <span class="mono">mpc…is5qnl632q.run.app/events</span> (общий с ticketbest, сторонний вендор). Перехват POST подтвердил настоящий CAPI: <span class="mono">AddToCart + value/currency + external_id + дедуп по event_id «facebook.AddToCart…»</span>. <span class="mono">cdl=API_unavailable</span> на браузерном пикселе этого НЕ показывает (поэтому раньше я ошибочно писал «сервера нет»). Открыто: шлёт ли mpc в пиксель орга или только платформы. Свой GTM — только у TOURINGTUNES.
   </div>
 
-  <h2 class="sec"><span class="dot da"></span>TICKETSHOP · greenfield (25, Рига) — только платформенный слой</h2>
+  <h2 class="sec"><span class="dot da"></span>TICKETSHOP · greenfield (28, Рига) — только платформенный слой</h2>
   <div class="card"><table>
     <thead><tr><th class="c">#</th><th>Орг (юрлицо / бренд)</th><th class="c">Соб</th></tr></thead>
     <tbody>
@@ -151,6 +152,9 @@
       <tr><td class="c mut">23</td><td>Tatjana Jermolajeva</td><td class="c">1</td></tr>
       <tr><td class="c mut">24</td><td>SIA VOLTAGE</td><td class="c">1</td></tr>
       <tr><td class="c mut">25</td><td>SIA «NURME BREWERY» <span class="mut">(фест на Hanzas Perons)</span></td><td class="c">1</td></tr>
+      <tr><td class="c mut">26</td><td>WONDERSALA <span class="mut">(клуб)</span></td><td class="c">2</td></tr>
+      <tr><td class="c mut">27</td><td>FIRST Club <span class="mut">(клуб)</span></td><td class="c">1</td></tr>
+      <tr><td class="c mut">28</td><td>Laska V21 <span class="mut">(клуб · иногда свой пиксель по-событийно 332…)</span></td><td class="c">2</td></tr>
     </tbody>
   </table></div>
 
@@ -173,40 +177,8 @@
     <b>НИ ОДИН канал не заперт — свой пиксель орга ставится ВЕЗДЕ</b> (Fienta, TicketShop, bezrindas, Paradīze, Serviss; большинство оргов просто не настроили). А server-side почти ни у кого → <b>весь рынок адресуем</b> для «server-side + измеренная реклама». Цель = «свой пиксель поставить можно, а server-side нет». Таких каналов много: <b>bezrindas</b> (68, малые площадки), <b>mct / lelluteatris</b> (свои сайты театров), <b>Fienta-браузерные орги</b>, мелкие промоутеры (Прямая Речь, WHF, Театр Сна). <b>Bilešu Paradīze</b> (165, КРУПНЕЙШИЙ) — свой пиксель ставится (большинство просто не настроили), CAPI нет → <b>адресуем без миграции</b>. <b>TicketShop / ticketbest</b> уже с платформенным Meta CAPI (`mpc…run.app`) → плохие цели. Разбор 168 «нестандартных» ссылок → <b>90 событий-целей</b> (файл <span class="mono">_168_analysis.csv</span>): МЧТ, Кукольный, Dramaturgu/Dirty Deal театры, Rīgas cirks, клубы (Kaņepes/MASA/K.Suns/Depo/Rocket Bar), музеи.
   </div>
 
-  <!-- ===================== SONGKICK ===================== -->
-  <h2 class="sec"><span class="dot db"></span>Songkick — клубная сцена лайв-музыки (трекинг по площадке)</h2>
-  <div class="note" style="margin-bottom:10px">
-    <b>Важно:</b> у самих songkick-событий <span class="mono">ticket_url = songkick.com</span> — это слой-дискавери, билетки в нём нет. «Билетка» ниже = где площадка <b>реально продаёт</b>: для части подтвердилось нашей базой (её НЕ-songkick события), для клубов, которых в базе с билеткой не было — <b>проверено вручную по их сайтам/соцсетям/билеткам</b> (2026-06-30). Вывод: <b>билетка есть у всех</b> — «нет в базе» был пробел нашего парсера, а не отсутствие продаж. Клубная сцена живой музыки сидит в основном на <b>Biļešu Serviss</b>.
-  </div>
-  <div class="card"><table>
-    <thead><tr><th>Площадка</th><th>Билетка (факт из базы)</th><th>Свой пиксель орга <span style="text-transform:none;font-weight:400">(проверено по событиям 30.06)</span></th><th>Server-side / CAPI</th><th class="c">Цель</th></tr></thead>
-    <tbody>
-      <tr class="hl"><td><b>Laska V21</b></td><td>TicketShop</td><td><b>по-событийно</b>: 1 из 2 <span class="mut">(шоу Shkodra — 7 пикс. вкл. <span class="mono">332…</span>; другое — нет)</span></td><td>платформ. Meta CAPI <span class="mono">mpc</span></td><td class="c">✅</td></tr>
-      <tr class="hl"><td>Melnā Piektdiena</td><td>TicketShop</td><td><span class="x">нет</span> <span class="mut">(2 соб. — только платформа)</span></td><td>платформ. <span class="mono">mpc</span></td><td class="c">✅</td></tr>
-      <tr class="hl"><td>WONDERSALA</td><td>TicketShop</td><td><span class="x">нет</span> <span class="mut">(2 соб.)</span></td><td>платформ. <span class="mono">mpc</span></td><td class="c">✅</td></tr>
-      <tr class="hl"><td>SPELET</td><td>TicketShop ×5</td><td><span class="x">нет</span> <span class="mut">(3 соб.)</span></td><td>платформ. <span class="mono">mpc</span></td><td class="c">✅</td></tr>
-      <tr class="hl"><td>FIRST Club</td><td>TicketShop</td><td><span class="x">нет</span> <span class="mut">(1 соб.)</span></td><td>платформ. <span class="mono">mpc</span></td><td class="c">✅</td></tr>
-      <tr><td>Hanzas Perons</td><td>Fienta + TicketShop</td><td><span class="x">нет</span> <span class="mut">(оба соб.)</span></td><td>Fienta — нет; TS — <span class="mono">mpc</span></td><td class="c">✅</td></tr>
-      <tr><td>M/Darbnīca</td><td>Fienta</td><td>✅ <b>есть</b> <span class="mono">1447705679171750</span> <span class="mut">(соб. Zuzanna)</span></td><td><span class="x">нет</span></td><td class="c">✅</td></tr>
-      <tr><td>Dailes teātris</td><td>Fienta</td><td><span class="x">нет</span> <span class="mut">(1 соб.)</span></td><td><span class="x">нет</span></td><td class="c">✅</td></tr>
-      <tr class="hl"><td>Depo <span class="mut">(11)</span></td><td>Biļešu Serviss + TicketShop <span class="mut">(их FB)</span></td><td><span class="x">нет</span> <span class="mut">(TS-событие)</span></td><td>Serviss — нет; TS — <span class="mono">mpc</span></td><td class="c">✅</td></tr>
-      <tr class="hl"><td>Coyote Fly</td><td>Biļešu Serviss <span class="mut">(+ часть Fienta)</span></td><td><span class="x">нет</span> <span class="mut">(соб. Regard, поле пустое)</span></td><td><span class="x">нет</span></td><td class="c">✅</td></tr>
-      <tr class="hl"><td>Kimmel kvartāls</td><td>Biļešu Serviss <span class="mut">(+ свой сайт)</span></td><td class="mut">по событию не добил <span class="mut">(Serviss-SPA виснет); поле есть, по умолч. пусто</span></td><td><span class="x">нет</span></td><td class="c">✅</td></tr>
-      <tr><td>Palladium</td><td>Biļešu Serviss <span class="mut">(+ Paradīze)</span></td><td class="mut">по событию не добил <span class="mut">(Serviss-SPA виснет)</span></td><td><span class="x">нет</span></td><td class="c">✅</td></tr>
-      <tr><td>The Lodge</td><td>Biļešu Serviss + Fienta <span class="mut">(+ RA)</span></td><td class="mut">по событию не добил <span class="mut">(Serviss-SPA виснет)</span></td><td><span class="x">нет</span></td><td class="c">✅</td></tr>
-      <tr><td>Angāra koncertzāle</td><td>Biļešu Serviss + Paradīze <span class="mut">(+ свой сайт)</span></td><td class="mut">по событию не добил <span class="mut">(Serviss-SPA виснет)</span></td><td><span class="x">нет</span></td><td class="c">✅</td></tr>
-      <tr><td>Xiaomi Arēna</td><td>Serviss / Paradīze</td><td class="mut">не проверял</td><td><span class="x">нет</span></td><td class="c"><span class="x">арена</span></td></tr>
-      <tr><td>Mežaparks · Dzintari</td><td>Serviss / bezrindas</td><td class="mut">не проверял</td><td><span class="x">нет</span></td><td class="c"><span class="x">большое</span></td></tr>
-      <tr><td>Festival Laima · регион</td><td>фест / вне Риги</td><td class="mut">—</td><td class="mut">—</td><td class="c">—</td></tr>
-    </tbody>
-  </table></div>
-  <div class="note">
-    <b>Билетка есть у всех</b> (прежнее «нет в базе → дверь/FB» снято — это был пробел парсера): 5 клубов на TicketShop, 3 на Fienta, 6 в основном на Biļešu Serviss. <b>Итого ~14 клубов/залов = живые цели.</b><br>
-    <b>Свой пиксель орга — проверено по событиям (30.06), и это главное: он ставится ПО-СОБЫТИЙНО самим промоутером шоу и встречается РЕДКО.</b> Из 17 проверенных событий орг-пиксель был лишь на <b>2</b> — на одном шоу Laska V21 (TicketShop, 7 пикселей) и на событии M/Darbnīca (Fienta, <span class="mono">1447705679171750</span>). На остальных 15 — только платформенный. То есть прежнее «✅ стоит у Laska» было переоценкой: на её втором событии пикселя нет. <b>Вывод для продаж — в плюс:</b> почти все события «слепые» по умолчанию (свой пиксель никто не держит постоянно) → огромный greenfield. На TicketShop платформенный Meta CAPI (<span class="mono">mpc</span>) идёт всегда; на Fienta/Serviss server-side нет. 4 Serviss-клуба (Kimmel/Palladium/Lodge/Angāra) по событию не добил — Serviss SPA виснет на автоматической проверке; структурно поле пикселя есть и по умолчанию пустое, выборка Coyote (Serviss) — пусто. <b>Biļešu Serviss</b> — крупнейший канал не только для арен, но и для клубной сцены.
-  </div>
-
   <div class="foot">
-    <b>Итог (server-side / CAPI).</b> <b>Fienta:</b> только у <b>okoncert</b> и <b>Curiosophy</b> — общий Stape-шлюз <span class="mono">capig.stape.*</span> (opt-in); остальные Fienta-орги — голый браузер. <b>TicketShop:</b> <b>платформенный Meta CAPI на ВСЕХ событиях</b> через <span class="mono">mpc…is5qnl632q.run.app/events</span> (общий вендор с ticketbest; перехват POST = настоящий CAPI с дедупом по event_id, суммой и external_id) → TicketShop накрыт server-side ЛУЧШЕ большинства Fienta-оргов. <b>Урок:</b> <span class="mono">cdl=API_unavailable</span> слеп к серверу (ошибался трижды) — server-side ищем ТОЛЬКО по домену-шлюзу в Network (capig.stape / mpc.run.app / stape.io / madgicx). Свой GTM — трое: Curiosophy, Braucam Kopā (Fienta), TOURINGTUNES (TicketShop). Greenfield (мерят ноль) — 47 рижских оргов. TicketShop разрешает пиксель орга (доказано 6 кейсами), миграция не нужна. ВАЖНО про пробел: Прямая Речь (org PRYAMAYA на Fienta) в базе ЕСТЬ, но в Fienta-орги не попала — её <span class="mono">ticket_url=pryamaya.eu</span> (свой домен со встроенным Fienta-чекаутом), а фильтр шёл по <span class="mono">fienta.com</span>. Таких потенциально много: <b>168 активных событий</b> продаются через нестандартные ссылки (свои домены/эмбеды) — там могут быть ещё скрытые Fienta-орги. Bilešu Paradīze 165 / Bilešu Serviss 66 по пикселям не разбирали.<br>
+    <b>Итог (server-side / CAPI).</b> <b>Fienta:</b> только у <b>okoncert</b> и <b>Curiosophy</b> — общий Stape-шлюз <span class="mono">capig.stape.*</span> (opt-in); остальные Fienta-орги — голый браузер. <b>TicketShop:</b> <b>платформенный Meta CAPI на ВСЕХ событиях</b> через <span class="mono">mpc…is5qnl632q.run.app/events</span> (общий вендор с ticketbest; перехват POST = настоящий CAPI с дедупом по event_id, суммой и external_id) → TicketShop накрыт server-side ЛУЧШЕ большинства Fienta-оргов. <b>Урок:</b> <span class="mono">cdl=API_unavailable</span> слеп к серверу (ошибался трижды) — server-side ищем ТОЛЬКО по домену-шлюзу в Network (capig.stape / mpc.run.app / stape.io / madgicx). Свой GTM — трое: Curiosophy, Braucam Kopā (Fienta), TOURINGTUNES (TicketShop). Greenfield (мерят ноль) — 51 рижский орг. TicketShop разрешает пиксель орга (доказано 6 кейсами), миграция не нужна. ВАЖНО про пробел: Прямая Речь (org PRYAMAYA на Fienta) в базе ЕСТЬ, но в Fienta-орги не попала — её <span class="mono">ticket_url=pryamaya.eu</span> (свой домен со встроенным Fienta-чекаутом), а фильтр шёл по <span class="mono">fienta.com</span>. Таких потенциально много: <b>168 активных событий</b> продаются через нестандартные ссылки (свои домены/эмбеды) — там могут быть ещё скрытые Fienta-орги. Bilešu Paradīze 165 / Bilešu Serviss 66 по пикселям не разбирали.<br>
     Метод: чтение реальных запросов <span class="mono">facebook.com/tr</span> через Performance API + код страниц, в реальном Chrome. Внутренний рабочий документ.
   </div>
 </div>
